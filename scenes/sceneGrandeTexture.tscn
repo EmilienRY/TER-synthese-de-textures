@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpi4nivkurrd0"]
+
+[ext_resource type="Script" path="res://script/changeScene2.gd" id="1_epjnw"]
+[ext_resource type="Shader" path="res://shaders/fractal2.gdshader" id="2_nldwg"]
+[ext_resource type="Texture2D" uid="uid://c7whf5k3c33e3" path="res://texture/rocky_terrain_02_diff_4k.jpg" id="3_2e0qf"]
+[ext_resource type="Script" path="res://script/camera_3d.gd" id="4_80cvo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwty2"]
+render_priority = 0
+shader = ExtResource("2_nldwg")
+shader_parameter/dirt_texture = ExtResource("3_2e0qf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8arqx"]
+material = SubResource("ShaderMaterial_rwty2")
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.175, 0)
+script = ExtResource("1_epjnw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(16715, 0, 0, 0, 1, 0, 0, 0, 15466.4, 0, 748.185, 0)
+mesh = SubResource("PlaneMesh_8arqx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.7323, -0.0140992, 0.680836, -0.0192498, 0.999815, -1.00614e-09, -0.68071, -0.013106, -0.732436, -2275.43, 1183.84, 0)
+script = ExtResource("4_80cvo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3227.03, 0)
+light_energy = 2.812
+light_angular_distance = 71.32

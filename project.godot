@@ -11,10 +11,17 @@ config_version=5
 [application]
 
 config/name="TER"
-run/main_scene="res://node_3d.tscn"
+run/main_scene="res://scenes/sceneDeBase.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
 
 [filesystem]
 
 import/blender/enabled=false
+
+[input]
+
+ui_select_1={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}

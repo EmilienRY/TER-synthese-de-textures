@@ -1,0 +1,171 @@
+[gd_scene load_steps=32 format=3 uid="uid://bu407mes15n1q"]
+
+[ext_resource type="Script" path="res://script/changeScene.gd" id="1_eegc5"]
+[ext_resource type="Shader" path="res://shaders/fractalCam.gdshader" id="2_f3ynr"]
+[ext_resource type="Texture2D" uid="uid://c7whf5k3c33e3" path="res://texture/rocky_terrain_02_diff_4k.jpg" id="3_qydv3"]
+[ext_resource type="Shader" path="res://shaders/texture.gdshader" id="4_06dg8"]
+[ext_resource type="Texture2D" uid="uid://bw3e8s0t3ax13" path="res://texture/ganges_river_pebbles_diff_4k.jpg" id="5_lao0r"]
+[ext_resource type="Texture2D" uid="uid://dkgvggod4c1ge" path="res://texture/red_brick_diff_4k.jpg" id="6_sngr0"]
+[ext_resource type="Script" path="res://script/camera_3d.gd" id="7_aptur"]
+[ext_resource type="Shader" path="res://shaders/shaderPavage.gdshader" id="8_yl4wk"]
+[ext_resource type="Shader" path="res://shaders/fractal2.gdshader" id="9_8nnpj"]
+[ext_resource type="Texture2D" uid="uid://dbwibipe558ps" path="res://texture/tronc2.jpg" id="10_tmi0c"]
+[ext_resource type="Texture2D" uid="uid://dmuq610p30kek" path="res://texture/nature-pine-branches-background.jpg" id="11_xklom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhofs"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dxrph"]
+material = SubResource("ShaderMaterial_vhofs")
+size = Vector2(300, 300)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syjuk"]
+render_priority = 0
+shader = ExtResource("4_06dg8")
+shader_parameter/dirt_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j2lmn"]
+material = SubResource("ShaderMaterial_syjuk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db232"]
+albedo_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qxqas"]
+material = SubResource("StandardMaterial3D_db232")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fw0ic"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("5_lao0r")
+
+[sub_resource type="SphereMesh" id="SphereMesh_alwo5"]
+material = SubResource("ShaderMaterial_fw0ic")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_paem4"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("6_sngr0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_unglq"]
+material = SubResource("ShaderMaterial_paem4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8ecp"]
+albedo_texture = ExtResource("6_sngr0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0vwoi"]
+material = SubResource("StandardMaterial3D_w8ecp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oagj5"]
+render_priority = 0
+shader = ExtResource("8_yl4wk")
+shader_parameter/noise_texture = ExtResource("6_sngr0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ujuyg"]
+material = SubResource("ShaderMaterial_oagj5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6oae"]
+render_priority = 0
+shader = ExtResource("9_8nnpj")
+shader_parameter/dirt_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y8aem"]
+material = SubResource("ShaderMaterial_v6oae")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2lyv"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("10_tmi0c")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7ubnu"]
+material = SubResource("ShaderMaterial_k2lyv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhsp"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("11_xklom")
+
+[sub_resource type="SphereMesh" id="SphereMesh_1oh5o"]
+material = SubResource("ShaderMaterial_fjhsp")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_eegc5")
+
+[node name="textureRep" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.01458, 0, 0, 0, 0.00216644, 0, 0, 0, 4.91612, -0.999172, 20.9521, 0)
+mesh = SubResource("PlaneMesh_dxrph")
+
+[node name="textureShad" type="MeshInstance3D" parent="."]
+transform = Transform3D(786.507, 0, 0, 0, 786.507, 0, 0, 0, 786.507, -1545.51, 59.3549, 6.4577)
+mesh = SubResource("PlaneMesh_j2lmn")
+
+[node name="textureDebase" type="MeshInstance3D" parent="."]
+transform = Transform3D(755.666, 0, 0, 0, 755.666, 0, 0, 0, 755.666, 1713.24, 0, 0)
+mesh = SubResource("PlaneMesh_qxqas")
+
+[node name="sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(644.421, 0, 0, 0, 644.421, 0, 0, 0, 644.421, 0, 240.277, 1347.65)
+mesh = SubResource("SphereMesh_alwo5")
+
+[node name="murCam" type="MeshInstance3D" parent="."]
+transform = Transform3D(953.601, 0, 0, 0, 837.807, 0, 0, 0, 130.022, -1389.6, 405.58, 1645.45)
+mesh = SubResource("BoxMesh_unglq")
+
+[node name="murBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(979.437, 0, 0, 0, 834.919, 0, 0, 0, 141.434, 1445.87, 446.176, 1583.21)
+mesh = SubResource("BoxMesh_0vwoi")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.745941, 0, 0.666012, 0, 1, 0, -0.666012, 0, -0.745941, 0, 497.411, -930.964)
+script = ExtResource("7_aptur")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.678839, 0.734287, 0, -0.734287, -0.678839, 0, 646.463, 0)
+light_energy = 2.717
+light_angular_distance = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(806.084, 0, 0, 0, 3.61997, 0, 0, 0, 695.294, 4048.27, 18.2522, 0)
+mesh = SubResource("PlaneMesh_ujuyg")
+
+[node name="bigScene" type="Node" parent="."]
+
+[node name="bigPlan" type="MeshInstance3D" parent="bigScene"]
+transform = Transform3D(5539.02, 0, 0, 0, 1.00088, 0, 0, 0, 6796.5, 743.355, -110.114, -9694.3)
+mesh = SubResource("PlaneMesh_y8aem")
+skeleton = NodePath("../..")
+
+[node name="arbre" type="Node" parent="bigScene"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bigScene/arbre"]
+transform = Transform3D(103.387, 0, 0, 0, 332.391, 0, 0, 0, 106.201, -2311.24, 205.085, -5057.74)
+mesh = SubResource("CylinderMesh_7ubnu")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="bigScene/arbre/MeshInstance3D"]
+transform = Transform3D(6.24008, 0, 0, 0, 1.63042, 0, 0, 0, 6.09248, 0.0418034, 1.20525, -0.241123)
+mesh = SubResource("SphereMesh_1oh5o")
+skeleton = NodePath("../../..")
+
+[node name="arbre2" type="Node" parent="bigScene"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bigScene/arbre2"]
+transform = Transform3D(103.387, 0, 0, 0, 332.391, 0, 0, 0, 106.201, 2279.38, 205.085, -7699.19)
+mesh = SubResource("CylinderMesh_7ubnu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="bigScene/arbre2/MeshInstance3D"]
+transform = Transform3D(6.24008, 0, 0, 0, 1.63042, 0, 0, 0, 6.09248, 0.0418034, 1.20525, -0.241123)
+mesh = SubResource("SphereMesh_1oh5o")
+skeleton = NodePath("../..")
+
+[node name="arbre2" type="Node" parent="bigScene/arbre2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bigScene/arbre2/arbre2"]
+transform = Transform3D(103.387, 0, 0, 0, 332.391, 0, 0, 0, 106.201, 3713.26, 205.085, -4876.16)
+mesh = SubResource("CylinderMesh_7ubnu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="bigScene/arbre2/arbre2/MeshInstance3D"]
+transform = Transform3D(6.24008, 0, 0, 0, 1.63042, 0, 0, 0, 6.09248, 0.0418034, 1.20525, -0.241123)
+mesh = SubResource("SphereMesh_1oh5o")
+skeleton = NodePath("../..")
