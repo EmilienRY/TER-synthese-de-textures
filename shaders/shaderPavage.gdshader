@@ -27,7 +27,7 @@ void fragment() {
     vec2 Gx = dFdx(U / PATCH_SCALE);
     vec2 Gy = dFdy(U / PATCH_SCALE);
 
-    vec4 m = texture(noise_texture, U);
+    vec4 m = texture(noise_texture, U,99.);
 
     vec3 F3 = vec3(F, 0.0);
     F3.z = 1.0 - F3.x - F3.y;
@@ -35,20 +35,7 @@ void fragment() {
     vec3 W;
     vec4 O;
 
-    if (F3.z > 0.0) {
-        W = vec3(F3.z, F3.y, F3.x);
-        O = W.x * textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I), Gx, Gy)
-          + W.y * textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy)
-          + W.z * textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy);
-    } else {
-        W = vec3(-F3.z, 1.0 - F3.y, 1.0 - F3.x);
-        O = W.x * textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 1.0)), Gx, Gy)
-          + W.y * textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy)
-          + W.z * textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy);
-    }
 	
-	
-	/*
 	if (F3.z > 0.0) {
         W = vec3(F3.z, F3.y, F3.x);
         O = W.x * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
@@ -62,7 +49,7 @@ void fragment() {
     }
 
     O = m + O / length(W);   // pas bien compris intéret
-	*/
+	
 	
 	
     ALBEDO = O.rgb;

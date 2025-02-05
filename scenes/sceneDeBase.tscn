@@ -35,6 +35,7 @@ material = SubResource("ShaderMaterial_syjuk")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db232"]
 albedo_texture = ExtResource("3_qydv3")
+texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qxqas"]
 material = SubResource("StandardMaterial3D_db232")
@@ -58,7 +59,7 @@ material = SubResource("ShaderMaterial_paem4")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fa1v0"]
 render_priority = 0
 shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 0.0
+shader_parameter/PATCH_SCALE = 1.0
 shader_parameter/noise_texture = ExtResource("6_sngr0")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0vwoi"]
@@ -67,7 +68,7 @@ material = SubResource("ShaderMaterial_fa1v0")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oagj5"]
 render_priority = 0
 shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 3.0
+shader_parameter/PATCH_SCALE = 4.0
 shader_parameter/noise_texture = ExtResource("3_qydv3")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ujuyg"]
@@ -100,7 +101,7 @@ material = SubResource("ShaderMaterial_wb3tl")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8vbpc"]
 render_priority = 0
 shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 15.0
+shader_parameter/PATCH_SCALE = 100.0
 shader_parameter/noise_texture = ExtResource("3_qydv3")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2jxgx"]
@@ -109,7 +110,7 @@ material = SubResource("ShaderMaterial_8vbpc")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2dj7"]
 render_priority = 0
 shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 1.0
+shader_parameter/PATCH_SCALE = 4.0
 shader_parameter/noise_texture = ExtResource("12_h5d8a")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bc000"]
@@ -118,7 +119,7 @@ material = SubResource("ShaderMaterial_u2dj7")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hgfpl"]
 render_priority = 0
 shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 15.0
+shader_parameter/PATCH_SCALE = 4.0
 shader_parameter/noise_texture = ExtResource("10_5lbmt")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1wagi"]
@@ -127,7 +128,7 @@ material = SubResource("ShaderMaterial_hgfpl")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hjjk3"]
 render_priority = 0
 shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 3.0
+shader_parameter/PATCH_SCALE = 10.0
 shader_parameter/noise_texture = ExtResource("11_xklom")
 
 [sub_resource type="SphereMesh" id="SphereMesh_7bq24"]
@@ -211,7 +212,7 @@ mesh = SubResource("BoxMesh_0vwoi")
 skeleton = NodePath("../..")
 
 [node name="pavage" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(1108.26, 0, 0, 0, 3.61997, 0, 0, 0, 1004.72, 4048.27, 18.2522, 0)
+transform = Transform3D(1108.26, 0, 0, 0, 3.61997, 0, 0, 0, 1004.72, 4029.52, 0.18738, -31.6268)
 mesh = SubResource("PlaneMesh_ujuyg")
 skeleton = NodePath("../..")
 
