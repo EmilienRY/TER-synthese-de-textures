@@ -1,10 +1,8 @@
-
-
 shader_type spatial;
 uniform sampler2D dirt_texture: source_color;
 
 
-vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth)
+vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth,float camdis)
 {
     float LOD = log(depth);
     float LOD_floor = floor(LOD);
@@ -20,8 +18,21 @@ vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth)
     vec4 tex0 = textureGrad(tex, uv1, dx, dy);
     vec4 tex1 = textureGrad(tex, uv2, dx, dy);
     vec4 tex2 = textureGrad(tex, uv3, dx, dy);
-
-    return (tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
+	
+	vec4 frac=(tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
+	
+	return frac;
+	if(camdis>1000.){
+		return texture(dirt_texture,uv);
+	}
+	else if(camdis>10.){
+		float poids= (camdis-10.)/990.;
+		return mix(frac,tex1,poids);
+	}
+	else{
+		return frac;
+	}
+	
 }
 
 void fragment()
@@ -38,12 +49,16 @@ void fragment()
 
     float depth = camera_distance*0.001;
     depth *= 1e3 / VIEWPORT_SIZE.y;
-
-
-    vec4 col = fractal_texture_mip(dirt_texture, uv, depth);
-
-    ALBEDO = col.rgb;
-    ALPHA = 1.0;
+	
+	
+	
+	
+	
+	
+	ALBEDO = fractal_texture_mip(dirt_texture, uv, depth,camera_distance).rgb;
+	ALPHA = 1.0;
+	
+	
 
 }
 

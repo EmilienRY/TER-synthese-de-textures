@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpi4nivkurrd0"]
 
-[ext_resource type="Script" path="res://script/changeScene2.gd" id="1_epjnw"]
-[ext_resource type="Shader" path="res://shaders/fractal2.gdshader" id="2_nldwg"]
+[ext_resource type="Script" uid="uid://cy236kgog7n3l" path="res://script/changeScene2.gd" id="1_epjnw"]
+[ext_resource type="Shader" uid="uid://b74h0id5wv18k" path="res://shaders/fractal2.gdshader" id="2_nldwg"]
 [ext_resource type="Texture2D" uid="uid://c7whf5k3c33e3" path="res://texture/rocky_terrain_02_diff_4k.jpg" id="3_2e0qf"]
-[ext_resource type="Script" path="res://script/camera_3d.gd" id="4_80cvo"]
+[ext_resource type="Script" uid="uid://bapypm8ke5q7k" path="res://script/camera_3d.gd" id="4_80cvo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rwty2"]
 render_priority = 0

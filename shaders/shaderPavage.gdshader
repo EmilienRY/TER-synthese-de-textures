@@ -17,7 +17,7 @@ vec2 rnd22(vec2 p) {
 
 void fragment() {
     mat2 M0 = mat2(vec2(1.0, 0.0), vec2(0.5, sqrt(3.0)/2.0));
-    mat2 M = inv(M0);
+    mat2 M = inverse(M0);
 
     vec2 U = UV * PATCH_SCALE;
     vec2 V = M * U;
@@ -35,7 +35,7 @@ void fragment() {
     vec3 W;
     vec4 O;
 
-	
+
 	if (F3.z > 0.0) {
         W = vec3(F3.z, F3.y, F3.x);
         O = W.x * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
@@ -48,11 +48,6 @@ void fragment() {
           + W.z * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
     }
 
-    O = m + O / length(W);   // pas bien compris intéret
-	
-	
-	
+    O = m + O / length(W); 
     ALBEDO = O.rgb;
 }
-
-

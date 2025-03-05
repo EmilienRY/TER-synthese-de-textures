@@ -1,5 +1,3 @@
-
-
 shader_type spatial;
 uniform sampler2D dirt_texture: source_color;
 
@@ -46,4 +44,3 @@ void fragment()
     ALPHA = 1.0;
 
 }
-
