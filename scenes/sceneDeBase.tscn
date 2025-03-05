@@ -302,3 +302,23 @@ mesh = SubResource("CylinderMesh_7ubnu")
 transform = Transform3D(6.24008, 0, 0, 0, 1.63042, 0, 0, 0, 6.09248, 0.0418034, 1.20525, -0.241123)
 mesh = SubResource("SphereMesh_1oh5o")
 skeleton = NodePath("../..")
+
+[node name="textureDeBase" type="Label3D" parent="."]
+transform = Transform3D(-9.6296, 0, -0.0416411, 0, 18.566, 0, 0.336778, 0, -1.19066, 5629.51, 167.683, 742.106)
+text = "Testure de base"
+font_size = 4095
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-9.63249, 0, -0.0196861, 0, 31.2934, 0, 0.189663, 0, -0.999806, 7813.47, 233.288, 929.188)
+text = "Pavage et mélange"
+font_size = 4000
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-8.21, -0.508776, 0.00855688, -0.121663, 34.3329, 0.000126804, -0.0705089, 0, -0.996575, 9973.78, 327.441, 835.741)
+text = "combinassion fractal et pavage"
+font_size = 4000
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-19.9945, 0, -0.0469494, 0, 16.623, 0, 0.939767, 0, -0.998897, 12451.8, 238.409, 972.04)
+text = "fractal"
+font_size = 4000
