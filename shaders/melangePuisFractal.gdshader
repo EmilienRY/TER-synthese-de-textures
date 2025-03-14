@@ -22,8 +22,8 @@ vec4 pavage(vec2 uv) {
 
     vec2 U = uv * PATCH_SCALE;
     vec2 V = M * U;
-    vec2 I = floor(V); 
-    vec2 F = fract(V); 
+    vec2 I = floor(V);
+    vec2 F = fract(V);
 
     vec2 Gx = dFdx(U / PATCH_SCALE);
     vec2 Gy = dFdy(U / PATCH_SCALE);
@@ -49,7 +49,7 @@ vec4 pavage(vec2 uv) {
           + W.z * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
     }
 
-    O = m + O / length(W); 
+    O = m + O / length(W);
     return O;
 }
 

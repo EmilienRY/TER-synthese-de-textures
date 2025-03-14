@@ -1,7 +1,7 @@
-[gd_scene load_steps=55 format=3 uid="uid://bu407mes15n1q"]
+[gd_scene load_steps=89 format=3 uid="uid://bu407mes15n1q"]
 
 [ext_resource type="Script" uid="uid://do1703xia6w2x" path="res://script/changeScene.gd" id="1_eegc5"]
-[ext_resource type="Shader" uid="uid://drs3undkitqte" path="res://shaders/fractalCam.gdshader" id="2_f3ynr"]
+[ext_resource type="Shader" uid="uid://drs3undkitqte" path="res://shaders/fractal.gdshader" id="2_f3ynr"]
 [ext_resource type="Texture2D" uid="uid://c7whf5k3c33e3" path="res://texture/rocky_terrain_02_diff_4k.jpg" id="3_qydv3"]
 [ext_resource type="Shader" uid="uid://crgjqvswdbvm5" path="res://shaders/texture.gdshader" id="4_06dg8"]
 [ext_resource type="Texture2D" uid="uid://bw3e8s0t3ax13" path="res://texture/ganges_river_pebbles_diff_4k.jpg" id="5_lao0r"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://bhnapndxn8ex5" path="res://texture/aerial_rocks_02_diff_4k.jpg" id="12_h5d8a"]
 [ext_resource type="Texture2D" uid="uid://c2n8oknf3w6v8" path="res://texture/minecraft.png" id="12_kiwxf"]
 [ext_resource type="Shader" uid="uid://jd4qy6k1hj3v" path="res://shaders/melangePuisFractal.gdshader" id="14_2sp6e"]
+[ext_resource type="Shader" uid="uid://dqpxmcy5swcld" path="res://shaders/fractalDistance.gdshader" id="17_qbyap"]
+[ext_resource type="Texture2D" uid="uid://xqji83ul06cy" path="res://texture/fabric_pattern_07_col_1_4k.png" id="18_1vkv7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vhofs"]
 render_priority = 0
@@ -177,6 +179,134 @@ shader_parameter/dirt_texture = ExtResource("11_xklom")
 [sub_resource type="SphereMesh" id="SphereMesh_1oh5o"]
 material = SubResource("ShaderMaterial_fjhsp")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vkv7"]
+render_priority = 0
+shader = ExtResource("17_qbyap")
+shader_parameter/dirt_texture = ExtResource("10_5lbmt")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y2f1m"]
+material = SubResource("ShaderMaterial_1vkv7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2f1m"]
+render_priority = 0
+shader = ExtResource("17_qbyap")
+shader_parameter/dirt_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_orcp7"]
+material = SubResource("ShaderMaterial_y2f1m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fk6dk"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_81nh3"]
+material = SubResource("ShaderMaterial_fk6dk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4djn1"]
+render_priority = 0
+shader = ExtResource("14_2sp6e")
+shader_parameter/dirt_texture = ExtResource("3_qydv3")
+shader_parameter/PATCH_SCALE = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r120g"]
+material = SubResource("ShaderMaterial_4djn1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s53fs"]
+render_priority = 0
+shader = ExtResource("8_yl4wk")
+shader_parameter/noise_texture = ExtResource("3_qydv3")
+shader_parameter/PATCH_SCALE = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2iaud"]
+material = SubResource("ShaderMaterial_s53fs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rgw4"]
+albedo_texture = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nt64e"]
+material = SubResource("StandardMaterial3D_5rgw4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sql1u"]
+render_priority = 0
+shader = ExtResource("17_qbyap")
+shader_parameter/dirt_texture = ExtResource("18_1vkv7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t4ed0"]
+material = SubResource("ShaderMaterial_sql1u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8k7w"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("18_1vkv7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a8xv4"]
+material = SubResource("ShaderMaterial_e8k7w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xi3qd"]
+render_priority = 0
+shader = ExtResource("14_2sp6e")
+shader_parameter/dirt_texture = ExtResource("18_1vkv7")
+shader_parameter/PATCH_SCALE = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yj54e"]
+material = SubResource("ShaderMaterial_xi3qd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cojnk"]
+render_priority = 0
+shader = ExtResource("8_yl4wk")
+shader_parameter/noise_texture = ExtResource("18_1vkv7")
+shader_parameter/PATCH_SCALE = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vrdko"]
+material = SubResource("ShaderMaterial_cojnk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yh0ot"]
+albedo_texture = ExtResource("18_1vkv7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qydnb"]
+material = SubResource("StandardMaterial3D_yh0ot")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jssy"]
+albedo_texture = ExtResource("11_xklom")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ip5hb"]
+material = SubResource("StandardMaterial3D_7jssy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fwug"]
+render_priority = 0
+shader = ExtResource("8_yl4wk")
+shader_parameter/noise_texture = ExtResource("11_xklom")
+shader_parameter/PATCH_SCALE = 5.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8p8vu"]
+material = SubResource("ShaderMaterial_3fwug")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnctu"]
+render_priority = 0
+shader = ExtResource("14_2sp6e")
+shader_parameter/dirt_texture = ExtResource("11_xklom")
+shader_parameter/PATCH_SCALE = 5.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4qqy1"]
+material = SubResource("ShaderMaterial_gnctu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsbqj"]
+render_priority = 0
+shader = ExtResource("2_f3ynr")
+shader_parameter/dirt_texture = ExtResource("11_xklom")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4lw5t"]
+material = SubResource("ShaderMaterial_wsbqj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqhdn"]
+render_priority = 0
+shader = ExtResource("17_qbyap")
+shader_parameter/dirt_texture = ExtResource("11_xklom")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vsn44"]
+material = SubResource("ShaderMaterial_cqhdn")
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eegc5")
 
@@ -192,7 +322,7 @@ script = ExtResource("7_aptur")
 [node name="sceneTest" type="Node" parent="."]
 
 [node name="textureRep" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(6.36635, 0, 0, 0, 0.00205094, 0, 0, 0, 6.43942, 12089.9, -31.8998, -153.958)
+transform = Transform3D(6.36635, 0, 0, 0, 0.00205094, 0, 0, 0, 6.43942, 18578.7, 46.9366, 1416.71)
 mesh = SubResource("PlaneMesh_dxrph")
 skeleton = NodePath("../..")
 
@@ -202,7 +332,7 @@ mesh = SubResource("PlaneMesh_j2lmn")
 skeleton = NodePath("../..")
 
 [node name="textureDebase" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(755.512, 0, 15.2321, 0, 755.666, 0, -15.2321, 0, 755.512, 5638.33, -10.234, -169.04)
+transform = Transform3D(915.877, 0, 17.8963, 0, 752.734, 0, -18.4653, 0, 887.654, 11078.1, 42.6206, 1528.68)
 mesh = SubResource("PlaneMesh_qxqas")
 skeleton = NodePath("../..")
 
@@ -222,7 +352,7 @@ mesh = SubResource("BoxMesh_0vwoi")
 skeleton = NodePath("../..")
 
 [node name="pavage" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(970.172, 0, 0, 0, 3.61997, 0, 0, 0, 904.792, 7761.01, 0.18738, -111.543)
+transform = Transform3D(970.172, 0, 0, 0, 3.61997, 0, 0, 0, 904.792, 13667.3, 69.4626, 1468.84)
 mesh = SubResource("PlaneMesh_ujuyg")
 skeleton = NodePath("../..")
 
@@ -247,7 +377,7 @@ transform = Transform3D(1162.61, 0, 0, 0, 2.84688, 0, 0, 0, 1173.7, 4010.83, 0, 
 mesh = SubResource("PlaneMesh_bc000")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(870.857, 0, 0, 0, 1, 0, 0, 0, 948.424, 9959.21, 0, -111.761)
+transform = Transform3D(870.857, 0, 0, 0, 1, 0, 0, 0, 948.424, 16067.2, 5.06445, 1467.16)
 mesh = SubResource("PlaneMesh_1wagi")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="sceneTest"]
@@ -304,21 +434,90 @@ mesh = SubResource("SphereMesh_1oh5o")
 skeleton = NodePath("../..")
 
 [node name="textureDeBase" type="Label3D" parent="."]
-transform = Transform3D(-9.6296, 0, -0.0416411, 0, 18.566, 0, 0.336778, 0, -1.19066, 5629.51, 167.683, 742.106)
+transform = Transform3D(-9.6296, 0, -0.0416411, 0, 18.566, 0, 0.336778, 0, -1.19066, 11062.6, 229.014, 2718.46)
 text = "Testure de base"
 font_size = 4095
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-9.63249, 0, -0.0196861, 0, 31.2934, 0, 0.189663, 0, -0.999806, 7813.47, 233.288, 929.188)
+transform = Transform3D(-9.63249, 0, -0.0196861, 0, 31.2934, 0, 0.189663, 0, -0.999806, 13647.4, 254.479, 2656.28)
 text = "Pavage et mélange"
 font_size = 4000
 
 [node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(-8.21, -0.508776, 0.00855688, -0.121663, 34.3329, 0.000126804, -0.0705089, 0, -0.996575, 9973.78, 327.441, 835.741)
+transform = Transform3D(-8.21, -0.508776, 0.00855688, -0.121663, 34.3329, 0.000126804, -0.0705089, 0, -0.996575, 16118, 311.827, 2592.4)
 text = "combinassion fractal et pavage"
 font_size = 4000
 
 [node name="Label3D3" type="Label3D" parent="."]
-transform = Transform3D(-19.9945, 0, -0.0469494, 0, 16.623, 0, 0.939767, 0, -0.998897, 12451.8, 238.409, 972.04)
+transform = Transform3D(-20.0165, 0, -0.00207681, 0, 16.623, 0, 0.0415713, 0, -0.999997, 18595, 238.409, 2789.35)
 text = "fractal"
 font_size = 4000
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(997.858, 0, 0, 0, 1, 0, 0, 0, 969.917, 21114.1, 0, 1392.71)
+mesh = SubResource("PlaneMesh_y2f1m")
+
+[node name="Label3D4" type="Label3D" parent="."]
+transform = Transform3D(-11.2002, 0, -0.0023388, 0, 32.208, 0, 0.026195, 0, -0.999997, 20914.1, 413.512, 2650.47)
+text = "fractal avec ditance"
+font_size = 4000
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(976.107, 0, 0, 0, 5.30453, 0, 0, 0, 1092.09, 21185.1, 0, -1458.42)
+mesh = SubResource("PlaneMesh_orcp7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(991.347, 0, 0, 0, 0.979531, 0, 0, 0, 1050.57, 18730.9, -70.8583, -1472.23)
+mesh = SubResource("PlaneMesh_81nh3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1005.07, 0, 0, 0, 1309.44, 0, 0, 0, 1095.4, 16224.6, -62.0829, -1332.2)
+mesh = SubResource("PlaneMesh_r120g")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1089.74, 0, 0, 0, 1089.74, 0, 0, 0, 1089.74, 13698.2, -124.47, -1293.17)
+mesh = SubResource("PlaneMesh_2iaud")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1040.27, 0, 0, 0, 1040.27, 0, 0, 0, 1040.27, 11169.6, -164.092, -1401.34)
+mesh = SubResource("PlaneMesh_nt64e")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(918.469, 0, 0, 0, 918.469, 0, 0, 0, 918.469, 21118.2, 80.7737, -4490.93)
+mesh = SubResource("PlaneMesh_t4ed0")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1011.58, 0, 0, 0, 1011.58, 0, 0, 0, 1011.58, 18627.2, -11.0326, -4336.21)
+mesh = SubResource("PlaneMesh_a8xv4")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(957.127, 0, 0, 0, 939.474, 0, 0, 0, 975.615, 16245.8, -52.9719, -4359.09)
+mesh = SubResource("PlaneMesh_yj54e")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(968.686, 0, 0, 0, 968.686, 0, 0, 0, 968.686, 13717, -0.000244141, -4357.31)
+mesh = SubResource("PlaneMesh_vrdko")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1002.19, 0, 0, 0, 1002.19, 0, 0, 0, 1002.19, 11259.2, -61.5544, -4256.15)
+mesh = SubResource("PlaneMesh_qydnb")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(985.224, 0, 0, 0, 985.224, 0, 0, 0, 985.224, 11187.4, 7.14795, -7145.44)
+mesh = SubResource("PlaneMesh_ip5hb")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(1003.95, 0, 0, 0, 1003.95, 0, 0, 0, 1003.95, 13608.5, 0, -7112.23)
+mesh = SubResource("PlaneMesh_8p8vu")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1028.29, 0, 0, 0, 1028.29, 0, 0, 0, 1028.29, 16073.6, -108.625, -7079.61)
+mesh = SubResource("PlaneMesh_4qqy1")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(1102.14, 0, 0, 0, 4179.64, 0, 0, 0, 1011.82, 18724, 0, -7097.46)
+mesh = SubResource("PlaneMesh_4lw5t")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(1006.6, 0, 0, 0, 1006.6, 0, 0, 0, 1006.6, 21154.7, 0, -7042.57)
+mesh = SubResource("PlaneMesh_vsn44")

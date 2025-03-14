@@ -21,8 +21,8 @@ void fragment() {
 
     vec2 U = UV * PATCH_SCALE;
     vec2 V = M * U;
-    vec2 I = floor(V); 
-    vec2 F = fract(V); 
+    vec2 I = floor(V);
+    vec2 F = fract(V);
 
     vec2 Gx = dFdx(U / PATCH_SCALE);
     vec2 Gy = dFdy(U / PATCH_SCALE);
@@ -48,6 +48,6 @@ void fragment() {
           + W.z * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
     }
 
-    O = m + O / length(W); 
+    O = m + O / length(W);
     ALBEDO = O.rgb;
 }
