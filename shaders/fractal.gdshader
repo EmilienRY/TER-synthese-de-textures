@@ -40,10 +40,6 @@ void fragment()
     depth *= 1e3 / VIEWPORT_SIZE.y;
 
 
-
-
-
-
 	ALBEDO = fractal_texture_mip(dirt_texture, uv, depth,camera_distance).rgb;
 	ALPHA = 1.0;
 

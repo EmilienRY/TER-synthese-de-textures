@@ -21,12 +21,15 @@ vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth,float camdis)
 
 	vec4 frac=(tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
 
-	if(camdis>10000.){
+	if(camdis>1000.){
 		return texture(dirt_texture,uv);
 	}
 	else if(camdis>10.){
-		float poids= (camdis-10.)/9990.;
-		return mix(frac,tex1,poids);
+		float poids= (camdis-10.)/990.;
+		//return vec4(poids,0,0,0);
+		return mix(frac, texture(dirt_texture,uv),poids);
+		//return mix(tex1,frac,poids);s
+
 	}
 	else{
 		return frac;
@@ -38,6 +41,7 @@ void fragment()
 {
 
     vec2 uv = UV;
+	
     uv = fract(uv * 1.0);
 
     vec3 world_camera = (INV_VIEW_MATRIX  * vec4(vec3(0.0), 1.0)).xyz; // pos de la cam
@@ -49,14 +53,7 @@ void fragment()
     float depth = camera_distance*0.001;
     depth *= 1e3 / VIEWPORT_SIZE.y;
 
-
-
-
-
-
 	ALBEDO = fractal_texture_mip(dirt_texture, uv, depth,camera_distance).rgb;
 	ALPHA = 1.0;
-
-
 
 }

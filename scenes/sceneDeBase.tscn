@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://bu407mes15n1q"]
+[gd_scene load_steps=92 format=3 uid="uid://bu407mes15n1q"]
 
 [ext_resource type="Script" uid="uid://do1703xia6w2x" path="res://script/changeScene.gd" id="1_eegc5"]
 [ext_resource type="Shader" uid="uid://drs3undkitqte" path="res://shaders/fractal.gdshader" id="2_f3ynr"]
@@ -124,6 +124,7 @@ render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("10_5lbmt")
 shader_parameter/PATCH_SCALE = 10.0
+shader_parameter/distMax = 1000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1wagi"]
 material = SubResource("ShaderMaterial_hgfpl")
@@ -133,6 +134,7 @@ render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("11_xklom")
 shader_parameter/PATCH_SCALE = 10.0
+shader_parameter/distMax = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_7bq24"]
 material = SubResource("ShaderMaterial_hjjk3")
@@ -151,14 +153,17 @@ render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("3_qydv3")
 shader_parameter/PATCH_SCALE = 2.0
+shader_parameter/distMax = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mikgd"]
 material = SubResource("ShaderMaterial_sqfs3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6oae"]
 render_priority = 0
-shader = ExtResource("2_f3ynr")
+shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("3_qydv3")
+shader_parameter/PATCH_SCALE = 10.0
+shader_parameter/distMax = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y8aem"]
 material = SubResource("ShaderMaterial_v6oae")
@@ -207,7 +212,8 @@ material = SubResource("ShaderMaterial_fk6dk")
 render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 0.0
+shader_parameter/PATCH_SCALE = 181.02
+shader_parameter/distMax = 1000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r120g"]
 material = SubResource("ShaderMaterial_4djn1")
@@ -247,7 +253,8 @@ material = SubResource("ShaderMaterial_e8k7w")
 render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("18_1vkv7")
-shader_parameter/PATCH_SCALE = 0.0
+shader_parameter/PATCH_SCALE = 2.0
+shader_parameter/distMax = 100.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yj54e"]
 material = SubResource("ShaderMaterial_xi3qd")
@@ -287,6 +294,7 @@ render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("11_xklom")
 shader_parameter/PATCH_SCALE = 5.0
+shader_parameter/distMax = 1000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4qqy1"]
 material = SubResource("ShaderMaterial_gnctu")
@@ -306,6 +314,68 @@ shader_parameter/dirt_texture = ExtResource("11_xklom")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vsn44"]
 material = SubResource("ShaderMaterial_cqhdn")
+
+[sub_resource type="Shader" id="Shader_1vkv7"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orcp7"]
+render_priority = 0
+shader = SubResource("Shader_1vkv7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fk6dk"]
+material = SubResource("ShaderMaterial_orcp7")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eegc5")
@@ -395,7 +465,7 @@ mesh = SubResource("PlaneMesh_mikgd")
 [node name="bigScene" type="Node" parent="."]
 
 [node name="bigPlan" type="MeshInstance3D" parent="bigScene"]
-transform = Transform3D(5539.02, 0, 0, 0, 1.00088, 0, 0, 0, 6796.5, 743.355, 24.6324, -9694.3)
+transform = Transform3D(40000, 0, 0, 0, 0.819, 0, 0, 0, 40000, 9752.46, 358.316, -83093)
 mesh = SubResource("PlaneMesh_y8aem")
 skeleton = NodePath("../..")
 
@@ -443,18 +513,18 @@ transform = Transform3D(-9.63249, 0, -0.0196861, 0, 31.2934, 0, 0.189663, 0, -0.
 text = "Pavage et mélange"
 font_size = 4000
 
-[node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(-8.21, -0.508776, 0.00855688, -0.121663, 34.3329, 0.000126804, -0.0705089, 0, -0.996575, 16118, 311.827, 2592.4)
-text = "combinassion fractal et pavage"
-font_size = 4000
-
 [node name="Label3D3" type="Label3D" parent="."]
 transform = Transform3D(-20.0165, 0, -0.00207681, 0, 16.623, 0, 0.0415713, 0, -0.999997, 18595, 238.409, 2789.35)
 text = "fractal"
 font_size = 4000
 
+[node name="Label3D2" type="Label3D" parent="Label3D3"]
+transform = Transform3D(0.410153, 0.0254177, -0.000530889, -0.00731896, 2.06539, 7.62823e-06, 0.0875597, 0.00105665, 0.996556, 123.727, 4.41665, 202.094)
+text = "combinassion fractal et pavage"
+font_size = 4000
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(997.858, 0, 0, 0, 1, 0, 0, 0, 969.917, 21114.1, 0, 1392.71)
+transform = Transform3D(997.858, 0, 0, 0, 1, 0, 0, 0, 969.917, 21118.6, 0.137451, 1396.91)
 mesh = SubResource("PlaneMesh_y2f1m")
 
 [node name="Label3D4" type="Label3D" parent="."]
@@ -467,7 +537,7 @@ transform = Transform3D(976.107, 0, 0, 0, 5.30453, 0, 0, 0, 1092.09, 21185.1, 0,
 mesh = SubResource("PlaneMesh_orcp7")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(991.347, 0, 0, 0, 0.979531, 0, 0, 0, 1050.57, 18730.9, -70.8583, -1472.23)
+transform = Transform3D(991.347, 0, 0, 0, 0.979531, 0, 0, 0, 1050.57, 18730.9, -70.8583, -1321.94)
 mesh = SubResource("PlaneMesh_81nh3")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
@@ -521,3 +591,7 @@ mesh = SubResource("PlaneMesh_4lw5t")
 [node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
 transform = Transform3D(1006.6, 0, 0, 0, 1006.6, 0, 0, 0, 1006.6, 21154.7, 0, -7042.57)
 mesh = SubResource("PlaneMesh_vsn44")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="."]
+transform = Transform3D(2921.64, 0, 0, 0, 2921.64, 0, 0, 0, 2921.64, -10748.4, 0, 0)
+mesh = SubResource("PlaneMesh_fk6dk")

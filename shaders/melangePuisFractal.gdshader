@@ -1,6 +1,8 @@
 shader_type spatial;
 uniform sampler2D dirt_texture: source_color;
 uniform float PATCH_SCALE;
+uniform float distMax;
+
 
 mat2 inv(mat2 m) {
     float det = m[0][0] * m[1][1] - m[0][1] * m[1][0];
@@ -72,6 +74,7 @@ vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth)
     vec4 tex1 = pavage(uv2);
     vec4 tex2 = pavage(uv3);
 
+
     return (tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
 }
 
@@ -88,12 +91,22 @@ void fragment()
     vec4 a = INV_VIEW_MATRIX * vec4(VERTEX, 1.0); // pos du point
 
     float camera_distance = distance(a.xyz, world_camera);    // distance entre point et cam
+	
+	vec4 col;
+	if(camera_distance>=distMax){
+		
+		float depth = distMax*0.001;
+    	depth *= 1e3 / VIEWPORT_SIZE.y;
+    	col = fractal_texture_mip(dirt_texture, uv, depth);
+		
+	}
+	else{
+		float depth = camera_distance*0.001;
+    	depth *= 1e3 / VIEWPORT_SIZE.y;
+    	col = fractal_texture_mip(dirt_texture, uv, depth);
+	}
 
-    float depth = camera_distance*0.001;
-    depth *= 1e3 / VIEWPORT_SIZE.y;
 
-
-    vec4 col = fractal_texture_mip(dirt_texture, uv, depth);
 
     ALBEDO = col.rgb;
     ALPHA = 1.0;
