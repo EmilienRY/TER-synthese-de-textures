@@ -24,16 +24,12 @@ vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth,float camdis)
 	if(camdis>1000.){
 		return texture(dirt_texture,uv);
 	}
-	else if(camdis>10.){
-		float poids= (camdis-10.)/990.;
-		//return vec4(poids,0,0,0);
+	else{
+		float poids= (camdis)/1000.;
 		return mix(frac, texture(dirt_texture,uv),poids);
-		//return mix(tex1,frac,poids);s
 
 	}
-	else{
-		return frac;
-	}
+	
 
 }
 

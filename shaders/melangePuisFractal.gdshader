@@ -4,21 +4,13 @@ uniform float PATCH_SCALE;
 uniform float distMax;
 
 
-mat2 inv(mat2 m) {
-    float det = m[0][0] * m[1][1] - m[0][1] * m[1][0];
-	return mat2(vec2(m[1][1], -m[1][0]),vec2( -m[0][1], m[0][0])) / det;
-
-}
-
-
 vec2 rnd22(vec2 p) {
     return fract(sin((p) * mat2(vec2(127.1,311.7),vec2(269.5,183.3))) * 43758.5453);
 }
 
-/*artéfacts*/
-
 
 vec4 pavage(vec2 uv) {
+
     mat2 M0 = mat2(vec2(1.0, 0.0), vec2(0.5, sqrt(3.0)/2.0));
     mat2 M = inverse(M0);
 
@@ -91,14 +83,14 @@ void fragment()
     vec4 a = INV_VIEW_MATRIX * vec4(VERTEX, 1.0); // pos du point
 
     float camera_distance = distance(a.xyz, world_camera);    // distance entre point et cam
-	
+
 	vec4 col;
 	if(camera_distance>=distMax){
-		
+
 		float depth = distMax*0.001;
     	depth *= 1e3 / VIEWPORT_SIZE.y;
     	col = fractal_texture_mip(dirt_texture, uv, depth);
-		
+
 	}
 	else{
 		float depth = camera_distance*0.001;

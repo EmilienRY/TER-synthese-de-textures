@@ -123,8 +123,8 @@ material = SubResource("ShaderMaterial_u2dj7")
 render_priority = 0
 shader = ExtResource("14_2sp6e")
 shader_parameter/dirt_texture = ExtResource("10_5lbmt")
-shader_parameter/PATCH_SCALE = 10.0
-shader_parameter/distMax = 1000.0
+shader_parameter/PATCH_SCALE = 8.0
+shader_parameter/distMax = 2000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1wagi"]
 material = SubResource("ShaderMaterial_hgfpl")
@@ -222,7 +222,7 @@ material = SubResource("ShaderMaterial_4djn1")
 render_priority = 0
 shader = ExtResource("8_yl4wk")
 shader_parameter/noise_texture = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 0.0
+shader_parameter/PATCH_SCALE = 10.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2iaud"]
 material = SubResource("ShaderMaterial_s53fs")
@@ -422,7 +422,7 @@ mesh = SubResource("BoxMesh_0vwoi")
 skeleton = NodePath("../..")
 
 [node name="pavage" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(970.172, 0, 0, 0, 3.61997, 0, 0, 0, 904.792, 13667.3, 69.4626, 1468.84)
+transform = Transform3D(970.172, 0, 0, 0, 3.61997, 0, 0, 0, 904.792, 13680.5, 64.0699, 1443.92)
 mesh = SubResource("PlaneMesh_ujuyg")
 skeleton = NodePath("../..")
 
@@ -447,7 +447,7 @@ transform = Transform3D(1162.61, 0, 0, 0, 2.84688, 0, 0, 0, 1173.7, 4010.83, 0, 
 mesh = SubResource("PlaneMesh_bc000")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(870.857, 0, 0, 0, 1, 0, 0, 0, 948.424, 16067.2, 5.06445, 1467.16)
+transform = Transform3D(870.857, 0, 0, 0, 1, 0, 0, 0, 948.424, 16067.2, 31.6732, 1467.16)
 mesh = SubResource("PlaneMesh_1wagi")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="sceneTest"]
