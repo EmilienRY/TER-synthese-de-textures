@@ -1,5 +1,5 @@
 shader_type spatial;
-uniform sampler2D noise_texture: source_color;
+uniform sampler2D tex: source_color;
 uniform float PATCH_SCALE;
 
 vec2 rnd22(vec2 p) {
@@ -21,7 +21,7 @@ void fragment() {
     vec2 Gx = dFdx(U / PATCH_SCALE);
     vec2 Gy = dFdy(U / PATCH_SCALE);
 
-    vec4 m = texture(noise_texture, U,99.);
+    vec4 m = texture(tex, U,99.);
 	vec3 F = vec3(fract(V),0.0), W;;
     F.z = 1.0 - F.x - F.y;
 
@@ -30,14 +30,14 @@ void fragment() {
 
 	if (F.z > 0.0) {
         W = vec3(F.z, F.y, F.x);
-        O = W.x * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
-          + W.y * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
-          + W.z * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
+        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
+          + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
+          + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
     } else {
         W = vec3(-F.z, 1.0 - F.y, 1.0 - F.x);
-        O = W.x * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I+1.0), Gx, Gy) - m)
-          + W.y * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m)
-          + W.z * (textureGrad(noise_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
+        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I+1.0), Gx, Gy) - m)
+          + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m)
+          + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
     }
 
     O = m + O / length(W);

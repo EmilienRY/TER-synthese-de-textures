@@ -1,5 +1,5 @@
 shader_type spatial;
-uniform sampler2D dirt_texture: source_color;
+uniform sampler2D tex: source_color;
 uniform float PATCH_SCALE;
 uniform float distMax;
 
@@ -22,7 +22,7 @@ vec4 pavage(vec2 uv) {
     vec2 Gx = dFdx(U / PATCH_SCALE);
     vec2 Gy = dFdy(U / PATCH_SCALE);
 
-    vec4 m = texture(dirt_texture, U,99.);
+    vec4 m = texture(tex, U,99.);
 
     vec3 F3 = vec3(F, 0.0);
     F3.z = 1.0 - F3.x - F3.y;
@@ -33,14 +33,14 @@ vec4 pavage(vec2 uv) {
 
 	if (F3.z > 0.0) {
         W = vec3(F3.z, F3.y, F3.x);
-        O = W.x * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
-          + W.y * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
-          + W.z * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
+        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
+          + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
+          + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
     } else {
         W = vec3(-F3.z, 1.0 - F3.y, 1.0 - F3.x);
-        O = W.x * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 1.0)), Gx, Gy) - m)
-          + W.y * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m)
-          + W.z * (textureGrad(dirt_texture, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
+        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 1.0)), Gx, Gy) - m)
+          + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m)
+          + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
     }
 
     O = m + O / length(W);
@@ -49,7 +49,7 @@ vec4 pavage(vec2 uv) {
 
 
 
-vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth)
+vec4 fractal_texture_mip(sampler2D texBase, vec2 uv, float depth)
 {
     float LOD = log(depth);
     float LOD_floor = floor(LOD);
@@ -89,13 +89,13 @@ void fragment()
 
 		float depth = distMax*0.001;
     	depth *= 1e3 / VIEWPORT_SIZE.y;
-    	col = fractal_texture_mip(dirt_texture, uv, depth);
+    	col = pavage(UV);
 
 	}
 	else{
 		float depth = camera_distance*0.001;
     	depth *= 1e3 / VIEWPORT_SIZE.y;
-    	col = fractal_texture_mip(dirt_texture, uv, depth);
+    	col = mix(fractal_texture_mip(tex, uv, depth),pavage(UV),camera_distance/distMax);
 	}
 
 
