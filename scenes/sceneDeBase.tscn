@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bu407mes15n1q"]
+[gd_scene load_steps=46 format=3 uid="uid://bu407mes15n1q"]
 
 [ext_resource type="Script" uid="uid://do1703xia6w2x" path="res://script/changeScene.gd" id="1_eegc5"]
 [ext_resource type="Shader" uid="uid://drs3undkitqte" path="res://shaders/fractal.gdshader" id="2_f3ynr"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dejfpknwody7n" path="res://texture/snow_field_aerial_col_4k.jpg" id="9_xrw3e"]
 [ext_resource type="Texture2D" uid="uid://bgfnra67ebgkg" path="res://texture/defense_wall_diff_4k.jpg" id="10_5lbmt"]
 [ext_resource type="Texture2D" uid="uid://dry5vxn12g7id" path="res://texture/texturesACF/fabric.exr" id="10_sql1u"]
-[ext_resource type="Texture2D" uid="uid://c8t7siocrn6uy" path="res://texture/rock_face_diff_4k.jpg" id="11_uanra"]
 [ext_resource type="Texture2D" uid="uid://jj6gq2hc5ke8" path="res://texture/nature-pine-branches-background.jpg" id="11_xklom"]
 [ext_resource type="Texture2D" uid="uid://vcdsngtjxy3a" path="res://texture/texturesACF/nature.exr" id="12_t4ed0"]
 [ext_resource type="Shader" uid="uid://jd4qy6k1hj3v" path="res://shaders/melangePuisFractal.gdshader" id="14_2sp6e"]
@@ -28,15 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://c741r2ul2txin" path="res://texture/texturesACF/brick.exr" id="18_xi3qd"]
 [ext_resource type="Shader" uid="uid://cv50wanls5v7h" path="res://shaders/carreDualACF.gdshader" id="26_5rgw4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhofs"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("10_5lbmt")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dxrph"]
-material = SubResource("ShaderMaterial_vhofs")
-size = Vector2(300, 300)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_syjuk"]
 render_priority = 0
 shader = ExtResource("4_06dg8")
@@ -45,119 +35,11 @@ shader_parameter/dirt_texture = ExtResource("3_qydv3")
 [sub_resource type="PlaneMesh" id="PlaneMesh_j2lmn"]
 material = SubResource("ShaderMaterial_syjuk")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db232"]
-albedo_texture = ExtResource("10_5lbmt")
-texture_filter = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qxqas"]
-material = SubResource("StandardMaterial3D_db232")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fw0ic"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("5_lao0r")
-
-[sub_resource type="SphereMesh" id="SphereMesh_alwo5"]
-material = SubResource("ShaderMaterial_fw0ic")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_paem4"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("6_sngr0")
-
-[sub_resource type="BoxMesh" id="BoxMesh_unglq"]
-material = SubResource("ShaderMaterial_paem4")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fa1v0"]
-render_priority = 0
-shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_0vwoi"]
-material = SubResource("ShaderMaterial_fa1v0")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oagj5"]
-render_priority = 0
-shader = ExtResource("8_yl4wk")
-shader_parameter/tex = ExtResource("10_5lbmt")
-shader_parameter/PATCH_SCALE = 10.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ujuyg"]
-material = SubResource("ShaderMaterial_oagj5")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lw7m"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("9_xrw3e")
-
-[sub_resource type="TorusMesh" id="TorusMesh_bl4fl"]
-material = SubResource("ShaderMaterial_4lw7m")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctq0u"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("10_5lbmt")
-
-[sub_resource type="BoxMesh" id="BoxMesh_2ognr"]
-material = SubResource("ShaderMaterial_ctq0u")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb3tl"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("11_uanra")
-
-[sub_resource type="PrismMesh" id="PrismMesh_vhif6"]
-material = SubResource("ShaderMaterial_wb3tl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2dj7"]
-render_priority = 1
-shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 0.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_bc000"]
-material = SubResource("ShaderMaterial_u2dj7")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgfpl"]
-render_priority = 0
-shader = ExtResource("14_2sp6e")
-shader_parameter/tex = ExtResource("10_5lbmt")
-shader_parameter/PATCH_SCALE = 8.0
-shader_parameter/distMax = 2000.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1wagi"]
-material = SubResource("ShaderMaterial_hgfpl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjjk3"]
-render_priority = 0
-shader = ExtResource("14_2sp6e")
-shader_parameter/PATCH_SCALE = 10.0
-shader_parameter/distMax = 0.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_7bq24"]
-material = SubResource("ShaderMaterial_hjjk3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqdtf"]
-render_priority = 0
-shader = ExtResource("8_yl4wk")
-shader_parameter/PATCH_SCALE = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_sqd0r"]
-material = SubResource("ShaderMaterial_uqdtf")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqfs3"]
-render_priority = 0
-shader = ExtResource("14_2sp6e")
-shader_parameter/PATCH_SCALE = 2.0
-shader_parameter/distMax = 0.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_mikgd"]
-material = SubResource("ShaderMaterial_sqfs3")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81nh3"]
 render_priority = 0
 shader = ExtResource("17_y2f1m")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 7.215
+shader_parameter/PATCH_SCALE = 100.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4djn1"]
 material = SubResource("ShaderMaterial_81nh3")
@@ -177,27 +59,12 @@ render_priority = 0
 shader = ExtResource("26_5rgw4")
 shader_parameter/tex = ExtResource("3_qydv3")
 shader_parameter/acf_tex = ExtResource("4_2iaud")
-shader_parameter/PATCH_SCALE = 1.35
+shader_parameter/PATCH_SCALE = 1.82
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sql1u"]
 material = SubResource("ShaderMaterial_nt64e")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6oae"]
-render_priority = 0
-shader = ExtResource("14_2sp6e")
-shader_parameter/PATCH_SCALE = 10.0
-shader_parameter/distMax = 0.0
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_y8aem"]
-material = SubResource("ShaderMaterial_v6oae")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vkv7"]
-render_priority = 0
-shader = ExtResource("17_qbyap")
-shader_parameter/tex = ExtResource("10_5lbmt")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_y2f1m"]
-material = SubResource("ShaderMaterial_1vkv7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y2f1m"]
 render_priority = 0
@@ -210,7 +77,7 @@ material = SubResource("ShaderMaterial_y2f1m")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fk6dk"]
 render_priority = 0
 shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("3_qydv3")
+shader_parameter/tex = ExtResource("3_qydv3")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_81nh3"]
 material = SubResource("ShaderMaterial_fk6dk")
@@ -240,150 +107,6 @@ albedo_texture = ExtResource("3_qydv3")
 [sub_resource type="PlaneMesh" id="PlaneMesh_nt64e"]
 material = SubResource("StandardMaterial3D_5rgw4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sql1u"]
-render_priority = 0
-shader = ExtResource("17_qbyap")
-shader_parameter/tex = ExtResource("18_1vkv7")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_t4ed0"]
-material = SubResource("ShaderMaterial_sql1u")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8k7w"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("18_1vkv7")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_a8xv4"]
-material = SubResource("ShaderMaterial_e8k7w")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xi3qd"]
-render_priority = 0
-shader = ExtResource("14_2sp6e")
-shader_parameter/tex = ExtResource("18_1vkv7")
-shader_parameter/PATCH_SCALE = 2.0
-shader_parameter/distMax = 100.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_yj54e"]
-material = SubResource("ShaderMaterial_xi3qd")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cojnk"]
-render_priority = 0
-shader = ExtResource("8_yl4wk")
-shader_parameter/tex = ExtResource("18_1vkv7")
-shader_parameter/PATCH_SCALE = 200.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vrdko"]
-material = SubResource("ShaderMaterial_cojnk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yh0ot"]
-albedo_texture = ExtResource("18_1vkv7")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qydnb"]
-material = SubResource("StandardMaterial3D_yh0ot")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jssy"]
-albedo_texture = ExtResource("11_xklom")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ip5hb"]
-material = SubResource("StandardMaterial3D_7jssy")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fwug"]
-render_priority = 0
-shader = ExtResource("8_yl4wk")
-shader_parameter/tex = ExtResource("11_xklom")
-shader_parameter/PATCH_SCALE = 5.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8p8vu"]
-material = SubResource("ShaderMaterial_3fwug")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnctu"]
-render_priority = 0
-shader = ExtResource("14_2sp6e")
-shader_parameter/tex = ExtResource("11_xklom")
-shader_parameter/PATCH_SCALE = 5.0
-shader_parameter/distMax = 1000.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_4qqy1"]
-material = SubResource("ShaderMaterial_gnctu")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsbqj"]
-render_priority = 0
-shader = ExtResource("2_f3ynr")
-shader_parameter/dirt_texture = ExtResource("11_xklom")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_4lw5t"]
-material = SubResource("ShaderMaterial_wsbqj")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqhdn"]
-render_priority = 0
-shader = ExtResource("17_qbyap")
-shader_parameter/tex = ExtResource("11_xklom")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vsn44"]
-material = SubResource("ShaderMaterial_cqhdn")
-
-[sub_resource type="Shader" id="Shader_1vkv7"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.
-
-shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
-
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
-uniform ivec2 albedo_texture_size;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
-
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
-
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
-
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-void vertex() {
-	UV = UV * uv1_scale.xy + uv1_offset.xy;
-}
-
-void fragment() {
-	vec2 base_uv = UV;
-
-	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-
-	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
-
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_orcp7"]
-render_priority = 0
-shader = SubResource("Shader_1vkv7")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture_size = Vector2i(0, 0)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_fk6dk"]
-material = SubResource("ShaderMaterial_orcp7")
-
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eegc5")
 
@@ -395,77 +118,15 @@ light_angular_distance = 90.0
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_meshes")]
 transform = Transform3D(-0.999998, -0.000614968, 0.00196915, 0.00197826, -0.0151845, 0.999883, -0.000584995, 0.999885, 0.0151857, 11169.6, 1216.61, 367.683)
 script = ExtResource("7_aptur")
-target_meshes = [NodePath("../texBase"), NodePath("../fractal"), NodePath("../pavage"), NodePath("../fusion"), NodePath("../sceneTest/carreDual")]
+target_meshes = [NodePath("../texBase"), NodePath("../fractalDistance"), NodePath("../pavage"), NodePath("../fusion"), NodePath("../sceneTest/carreDual"), NodePath("../sceneTest/fractalCarréDual"), NodePath("../sceneTest/carreDualACF"), NodePath("../fractalSansDistance")]
 textures = Array[Texture2D]([ExtResource("3_qydv3"), ExtResource("4_2iaud"), ExtResource("9_xrw3e"), ExtResource("6_5rgw4"), ExtResource("5_orcp7"), ExtResource("8_nt64e"), ExtResource("18_1vkv7"), ExtResource("10_sql1u"), ExtResource("11_xklom"), ExtResource("12_t4ed0"), ExtResource("5_lao0r"), ExtResource("14_e8k7w"), ExtResource("10_5lbmt"), ExtResource("16_a8xv4"), ExtResource("6_sngr0"), ExtResource("18_xi3qd")])
 
 [node name="sceneTest" type="Node" parent="."]
 
-[node name="textureRep" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(6.5, 0, 0, 0, 0.002, 0, 0, 0, 6.5, 21312, 3.80489, -12384.8)
-mesh = SubResource("PlaneMesh_dxrph")
-skeleton = NodePath("../..")
-
 [node name="textureShad" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(786.507, 0, 0, 0, 786.507, 0, 0, 0, 786.507, -1545.51, 59.3549, 6.4577)
+transform = Transform3D(786.507, 0, 0, 0, 786.507, 0, 0, 0, 786.507, 4360.55, 59.3549, 6.4577)
 mesh = SubResource("PlaneMesh_j2lmn")
 skeleton = NodePath("../..")
-
-[node name="textureDebase" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(999.797, 0, 20.1572, 0, 752.734, 0, -20.1572, 0, 999.797, 11078.1, 42.6206, -12106.3)
-mesh = SubResource("PlaneMesh_qxqas")
-skeleton = NodePath("../..")
-
-[node name="sphere" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(644.421, 0, 0, 0, 644.421, 0, 0, 0, 644.421, 0, 240.277, 1347.65)
-mesh = SubResource("SphereMesh_alwo5")
-skeleton = NodePath("../..")
-
-[node name="murCam" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(953.539, 0, -1.4841, 0, 837.807, 0, 10.8846, 0, 130.014, -1798.32, 164.806, 2626.64)
-mesh = SubResource("BoxMesh_unglq")
-skeleton = NodePath("../..")
-
-[node name="murBase" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(979.437, 0, 0, 0, 834.919, 0, 0, 0, 141.434, -393.905, 146.186, 2658.87)
-mesh = SubResource("BoxMesh_0vwoi")
-skeleton = NodePath("../..")
-
-[node name="pavage" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(1000, 0, 0, 0, 3.62, 0, 0, 0, 1000, 13680.5, 64.0699, -11936.4)
-mesh = SubResource("PlaneMesh_ujuyg")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(111.696, 0, 0, 0, 106.978, 0, 0, 0, 119.358, -2410.97, 17.0825, 1617.28)
-mesh = SubResource("TorusMesh_bl4fl")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(856.046, 0, 0, 0, 900.539, 0, 0, 0, 938.539, -3485.51, 53.3017, 1584.43)
-mesh = SubResource("BoxMesh_2ognr")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(543.435, 0, 0, 0, 433.489, 0, 0, 0, 595.069, -3505.76, 222.774, -535.983)
-mesh = SubResource("PrismMesh_vhif6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(1162.61, 0, 0, 0, 2.84688, 0, 0, 0, 1173.7, 4010.83, 0, 3102.05)
-mesh = SubResource("PlaneMesh_bc000")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 16067.2, 31.6732, -12008.2)
-mesh = SubResource("PlaneMesh_1wagi")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(992.638, 0, 0, 0, 923.815, 0, 0, 0, 1042.87, 1293.1, 282.927, 5531.58)
-mesh = SubResource("SphereMesh_7bq24")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(1030.15, 0, 0, 0, 1134.12, 0, 0, 0, 1071.73, 1152.41, 0, 2839.17)
-mesh = SubResource("SphereMesh_sqd0r")
-
-[node name="melangeETfractal" type="MeshInstance3D" parent="sceneTest"]
-transform = Transform3D(974.942, 0, 0, 0, 8.25941, 0, 0, 0, 1119.06, -1912.67, 0, 5083.4)
-mesh = SubResource("PlaneMesh_mikgd")
 
 [node name="carreDual" type="MeshInstance3D" parent="sceneTest"]
 transform = Transform3D(1000, 0, 0, 0, 0.98, 0, 0, 0, 1000, 23915.7, -164.09, 345.743)
@@ -475,7 +136,7 @@ mesh = SubResource("PlaneMesh_4djn1")
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 29208.8, -164.09, 345.743)
 mesh = SubResource("PlaneMesh_s53fs")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="sceneTest"]
+[node name="carreDualACF" type="MeshInstance3D" parent="sceneTest"]
 transform = Transform3D(1000, 0, 0, 0, 0.98, 0, 0, 0, 1000, 26579.2, -164.09, 345.743)
 mesh = SubResource("PlaneMesh_sql1u")
 
@@ -512,20 +173,16 @@ transform = Transform3D(-20.0165, 0, -0.00207681, 0, 16.623, 0, 0.0415713, 0, -0
 text = "fractal"
 font_size = 4000
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 18521.2, 0.137451, -12311.9)
-mesh = SubResource("PlaneMesh_y2f1m")
-
 [node name="LabelFractalDistance" type="Label3D" parent="."]
 transform = Transform3D(-11.2002, 0, -0.0023388, 0, 32.208, 0, 0.026195, 0, -0.999997, 18699.3, 224.444, 2120.47)
 text = "fractal avec ditance"
 font_size = 4000
 
-[node name="fractal" type="MeshInstance3D" parent="."]
+[node name="fractalDistance" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 5.305, 0, 0, 0, 1000, 18729, -164.09, 345.743)
 mesh = SubResource("PlaneMesh_orcp7")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="fractalSansDistance" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 0.98, 0, 0, 0, 1000, 21213.9, -164.09, 345.743)
 mesh = SubResource("PlaneMesh_81nh3")
 
@@ -540,50 +197,6 @@ mesh = SubResource("PlaneMesh_2iaud")
 [node name="texBase" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 1040.27, 0, 0, 0, 1000, 10770.1, -164.092, 345.703)
 mesh = SubResource("PlaneMesh_nt64e")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 918.469, 0, 0, 0, 1000, 18770.3, 80.7737, -15281.5)
-mesh = SubResource("PlaneMesh_t4ed0")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1011.58, 0, 0, 0, 1000, 21288.4, -80.5575, -15327.2)
-mesh = SubResource("PlaneMesh_a8xv4")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 939.474, 0, 0, 0, 1000, 16245.8, -52.9719, -15350.1)
-mesh = SubResource("PlaneMesh_yj54e")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 968.686, 0, 0, 0, 1000, 13717, -0.000244141, -15348.3)
-mesh = SubResource("PlaneMesh_vrdko")
-
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1002.19, 0, 0, 0, 1000, 11259.2, -61.5544, -15247.2)
-mesh = SubResource("PlaneMesh_qydnb")
-
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 985.224, 0, 0, 0, 1000, 11187.4, 7.14795, -18136.4)
-mesh = SubResource("PlaneMesh_ip5hb")
-
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1003.95, 0, 0, 0, 1000, 13608.5, 0, -18103.2)
-mesh = SubResource("PlaneMesh_8p8vu")
-
-[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1028.29, 0, 0, 0, 1000, 16073.6, -108.625, -18070.6)
-mesh = SubResource("PlaneMesh_4qqy1")
-
-[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 4179.64, 0, 0, 0, 1000, 21560.2, 0, -18088.5)
-mesh = SubResource("PlaneMesh_4lw5t")
-
-[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1006.6, 0, 0, 0, 1000, 18865.5, 0, -18033.6)
-mesh = SubResource("PlaneMesh_vsn44")
-
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="."]
-transform = Transform3D(2921.64, 0, 0, 0, 2921.64, 0, 0, 0, 2921.64, -10748.4, 0, 0)
-mesh = SubResource("PlaneMesh_fk6dk")
 
 [node name="LabelCarreDual" type="Label3D" parent="."]
 transform = Transform3D(-134.949, 0, -0.0022008, 0, 115.149, 0, 0.296765, 0, -1.00078, 26499.4, 157.382, 1996.05)

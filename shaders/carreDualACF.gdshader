@@ -9,8 +9,7 @@ vec2 sample_acf(vec2 uv) {
 	float s = texture(acf_tex, uv).r;
 	s = s* 2.0 - 1.0;
 	
-	
-    return vec2(s,s);
+	return vec2(s,s);
 }
 
 float square_blend(vec2 local_uv) {
@@ -49,8 +48,8 @@ void fragment() {
     vec4 final_color = (tex1 * w1 + tex2 * w2) / norm;
 	ALBEDO = final_color.rgb;
 
-
 /*
+
 	//AFFICHAGE GRILLE
     float border_width = 0.05;
 

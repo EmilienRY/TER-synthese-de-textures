@@ -1,8 +1,8 @@
 shader_type spatial;
-uniform sampler2D dirt_texture: source_color;
+uniform sampler2D tex: source_color;
 
 
-vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth,float camdis)
+vec4 fractal_texture_mip(sampler2D t, vec2 uv, float depth,float camdis)
 {
     float LOD = log(depth);
     float LOD_floor = floor(LOD);
@@ -15,9 +15,9 @@ vec4 fractal_texture_mip(sampler2D tex, vec2 uv, float depth,float camdis)
     vec2 dx = dFdx(uv) / depth * exp(1.0);
     vec2 dy = dFdy(uv) / depth * exp(1.0);
 
-    vec4 tex0 = textureGrad(tex, uv1, dx, dy);
-    vec4 tex1 = textureGrad(tex, uv2, dx, dy);
-    vec4 tex2 = textureGrad(tex, uv3, dx, dy);
+    vec4 tex0 = textureGrad(t, uv1, dx, dy);
+    vec4 tex1 = textureGrad(t, uv2, dx, dy);
+    vec4 tex2 = textureGrad(t, uv3, dx, dy);
 
 	vec4 frac=(tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
 
@@ -40,7 +40,7 @@ void fragment()
     depth *= 1e3 / VIEWPORT_SIZE.y;
 
 
-	ALBEDO = fractal_texture_mip(dirt_texture, uv, depth,camera_distance).rgb;
+	ALBEDO = fractal_texture_mip(tex, uv, depth,camera_distance).rgb;
 	ALPHA = 1.0;
 
 

@@ -26,6 +26,7 @@ var positions = [
 func _ready() -> void:
 	self.set_far(100000)
 	pass
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_toggle_mouse_capture()
@@ -94,78 +95,6 @@ func move_camera():
 	position.z = positions[current_index].z
 	
 	
-func get_image_data(tex: Texture2D) -> Image:
-	var img := tex.get_image()
-	if img.is_compressed():
-		img.decompress()
-	var copy := img.duplicate()
-	copy.convert(Image.FORMAT_RGBA8)  # assure un format non compressé et accessible
-	return copy
-
-
-	
-func compute_mean(img: Image) -> Color:
-	var sum = Color()
-	var w = img.get_width()
-	var h = img.get_height()
-	
-	for y in h:
-		for x in w:
-			sum += img.get_pixel(x, y)
-	
-	return sum / float(w * h)
-
-func compute_acf(img: Image, max_offset: int = 64) -> Dictionary:
-	var mean = compute_mean(img)
-	var w = img.get_width()
-	var h = img.get_height()
-	var acf = {}
-	
-	for dy in range(-max_offset, max_offset + 1):
-		for dx in range(-max_offset, max_offset + 1):
-			var cov = 0.0
-			var count = 0
-			for y in range(h):
-				var y2 = y + dy
-				if y2 < 0 or y2 >= h:
-					continue
-				for x in range(w):
-					var x2 = x + dx
-					if x2 < 0 or x2 >= w:
-						continue
-					var c1 = img.get_pixel(x, y) - mean
-					var c2 = img.get_pixel(x2, y2) - mean
-					cov += c1.r * c2.r + c1.g * c2.g + c1.b * c2.b
-					count += 1
-			if count > 0:
-				cov /= count
-				acf[Vector2(dx, dy)] = cov
-	return acf
-
-func visualize_acf(acf: Dictionary, max_offset: int) -> ImageTexture:
-	var size = max_offset * 2 + 1
-	var img := Image.create(size, size, false, Image.FORMAT_RGB8)
-
-	var min_val = INF
-	var max_val = -INF
-	for val in acf.values():
-		min_val = min(min_val, val)
-		max_val = max(max_val, val)
-	
-	var scale = 1.0 / (max_val - min_val + 1e-6)
-
-	for dx in range(-max_offset, max_offset + 1):
-		for dy in range(-max_offset, max_offset + 1):
-			var pos = Vector2(dx, dy)
-			if acf.has(pos):
-				var val = (acf[pos] - min_val) * scale
-				var color = Color(val, val, val)
-				img.set_pixel(dx + max_offset, dy + max_offset, color)
-			else:
-				img.set_pixel(dx + max_offset, dy + max_offset, Color(0, 0, 0))
-	
-	var tex := ImageTexture.create_from_image(img)
-	return tex
 
 
 func change_texture():
@@ -174,7 +103,8 @@ func change_texture():
 	
 	current_texture_index = (current_texture_index + 2) % textures.size()
 	var new_texture = textures[current_texture_index]
-	
+	var acf_texture = textures[current_texture_index+1]
+
 	
 	
 	for mesh in target_meshes:
@@ -183,6 +113,7 @@ func change_texture():
 		if material:
 			if material is ShaderMaterial:
 				material.set_shader_parameter("tex", new_texture)
+				material.set_shader_parameter("acf_tex", acf_texture)
 			elif material is StandardMaterial3D:
 				material.albedo_texture = new_texture
 
