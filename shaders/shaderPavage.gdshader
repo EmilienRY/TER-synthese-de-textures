@@ -41,5 +41,17 @@ void fragment() {
     }
 
     O = m + O / length(W);
-    ALBEDO = O.rgb;
+	ALBEDO = O.rgb;
+
+	/*
+	float border_width = 0.03;
+
+	float border = smoothstep(0.0, border_width, min(F.x, min(F.y, F.z)));
+
+	vec3 debug_color = vec3(border); // gris foncé sur bord
+
+	ALBEDO = mix(O.rgb, debug_color, 0.5);
+	*/
+	
+	
 }
