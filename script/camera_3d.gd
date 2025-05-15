@@ -14,10 +14,13 @@ var current_texture_index = 0
 var patchScale = 0.0
 
 var positions = [
-	Vector3(11169.6, 1216.6, -1379.3),  # texBase
-	Vector3(18728.951, 1216.6, -1379.3), # fractal
-	Vector3(13698.2, 1216.6, -1379.3),  # pavage et mélange
-	Vector3(16224.6, 1216.6, -1379.3)   # combinaison
+	Vector3(10770.1, 1216.6, 345.703),  # texBase
+	Vector3(18729.0, 1216.6, 345.703), # fractal
+	Vector3(13406.0, 1216.6, 345.703),  # pavage et mélange
+	Vector3(16103.9, 1216.6, 345.703),   # combinaison
+	Vector3(23915.699, 1216.6, 345.703),   # carre
+	Vector3(26509.801, 1216.6, 345.703)   # carré fractal
+
 ]
 
 
@@ -101,9 +104,9 @@ func change_texture():
 	if textures.is_empty() or target_meshes.is_empty():
 		return
 	
-	current_texture_index = (current_texture_index + 2) % textures.size()
+	current_texture_index = (current_texture_index + 1) % textures.size()
 	var new_texture = textures[current_texture_index]
-	var acf_texture = textures[current_texture_index+1]
+	#var acf_texture = textures[current_texture_index+1]
 
 	
 	
@@ -113,7 +116,7 @@ func change_texture():
 		if material:
 			if material is ShaderMaterial:
 				material.set_shader_parameter("tex", new_texture)
-				material.set_shader_parameter("acf_tex", acf_texture)
+				#material.set_shader_parameter("acf_tex", acf_texture)
 			elif material is StandardMaterial3D:
 				material.albedo_texture = new_texture
 

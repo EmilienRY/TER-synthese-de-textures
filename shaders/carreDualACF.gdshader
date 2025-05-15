@@ -70,8 +70,3 @@ void fragment() {
 
 	
 }
-
-
-
-
-

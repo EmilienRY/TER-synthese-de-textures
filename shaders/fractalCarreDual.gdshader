@@ -4,7 +4,7 @@ uniform float PATCH_SCALE = 4.0;
 uniform float distMax;
 
 vec2 rnd22(vec2 p) {
-    return fract(sin((p) * mat2(vec2(127.1, 311.7), vec2(269.5, 183.3))) * 43758.5453);
+    return fract(sin(p * mat2(vec2(127.1, 311.7), vec2(269.5, 183.3))) * 43758.5453) - 0.5;
 }
 
 float square_blend(vec2 local_uv) {

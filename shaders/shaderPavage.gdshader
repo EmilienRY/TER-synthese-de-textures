@@ -7,6 +7,7 @@ vec2 rnd22(vec2 p) {
 }
 
 
+
 void fragment() {
     mat2 M0 = mat2(vec2(1.0, 0.0), vec2(0.5, sqrt(3.0)/2.0));
     mat2 M = inverse(M0);
@@ -22,11 +23,13 @@ void fragment() {
     vec2 Gy = dFdy(U / PATCH_SCALE);
 
     vec4 m = texture(tex, U,99.);
-	vec3 F = vec3(fract(V),0.0), W;;
+	vec3 F = vec3(fract(V),0.0);
     F.z = 1.0 - F.x - F.y;
 
     vec4 O;
-
+	vec3 W;
+	
+	
 
 	if (F.z > 0.0) {
         W = vec3(F.z, F.y, F.x);
