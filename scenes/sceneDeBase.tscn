@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bu407mes15n1q"]
+[gd_scene load_steps=39 format=3 uid="uid://bu407mes15n1q"]
 
 [ext_resource type="Script" uid="uid://do1703xia6w2x" path="res://script/changeScene.gd" id="1_eegc5"]
 [ext_resource type="Shader" uid="uid://drs3undkitqte" path="res://shaders/fractal.gdshader" id="2_f3ynr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://jj6gq2hc5ke8" path="res://texture/nature-pine-branches-background.jpg" id="11_xklom"]
 [ext_resource type="Shader" uid="uid://d3njrfr6a86q5" path="res://shaders/carreDual.gdshader" id="12_y2f1m"]
 [ext_resource type="Shader" uid="uid://bmkfdg0f5o08m" path="res://shaders/fractalCarreDual.gdshader" id="13_orcp7"]
+[ext_resource type="Shader" uid="uid://bq3r3c4308w2c" path="res://shaders/fractalVariance.gdshader" id="14_1vkv7"]
 [ext_resource type="Shader" uid="uid://jd4qy6k1hj3v" path="res://shaders/melangePuisFractal.gdshader" id="14_2sp6e"]
 [ext_resource type="Shader" uid="uid://dqpxmcy5swcld" path="res://shaders/fractalDistance.gdshader" id="17_qbyap"]
 [ext_resource type="Texture2D" uid="uid://k145yhpken8q" path="res://texture/fabric_pattern_07_col_1_4k.png" id="18_1vkv7"]
@@ -30,7 +31,7 @@ material = SubResource("ShaderMaterial_syjuk")
 render_priority = 0
 shader = ExtResource("12_y2f1m")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 40.9
+shader_parameter/PATCH_SCALE = 48.25
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4djn1"]
 material = SubResource("ShaderMaterial_81nh3")
@@ -39,11 +40,19 @@ material = SubResource("ShaderMaterial_81nh3")
 render_priority = 0
 shader = ExtResource("13_orcp7")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 4.57
+shader_parameter/PATCH_SCALE = 32.89
 shader_parameter/distMax = 1000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s53fs"]
 material = SubResource("ShaderMaterial_r120g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orcp7"]
+render_priority = 0
+shader = ExtResource("14_1vkv7")
+shader_parameter/tex = ExtResource("3_qydv3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fk6dk"]
+material = SubResource("ShaderMaterial_orcp7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbyap"]
 render_priority = 0
@@ -105,7 +114,7 @@ light_angular_distance = 90.0
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_meshes")]
 transform = Transform3D(-0.999998, -0.000614968, 0.00196915, 0.00197826, -0.0151845, 0.999883, -0.000584995, 0.999885, 0.0151857, 11169.6, 1216.61, 367.683)
 script = ExtResource("7_aptur")
-target_meshes = [NodePath("../texBase"), NodePath("../fractalDistance"), NodePath("../pavage"), NodePath("../fusion"), NodePath("../sceneTest/carreDual"), NodePath("../sceneTest/fractalCarréDual"), NodePath(""), NodePath("../fractalSansDistance")]
+target_meshes = [NodePath("../texBase"), NodePath("../fractalDistance"), NodePath("../pavage"), NodePath("../fusion"), NodePath("../sceneTest/carreDual"), NodePath("../sceneTest/fractalCarréDual"), null, NodePath("../fractalSansDistance")]
 textures = Array[Texture2D]([ExtResource("3_qydv3"), ExtResource("9_xrw3e"), ExtResource("5_orcp7"), ExtResource("18_1vkv7"), ExtResource("11_xklom"), ExtResource("5_lao0r"), ExtResource("10_5lbmt"), ExtResource("6_sngr0")])
 
 [node name="sceneTest" type="Node" parent="."]
@@ -122,6 +131,10 @@ mesh = SubResource("PlaneMesh_4djn1")
 [node name="fractalCarréDual" type="MeshInstance3D" parent="sceneTest"]
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 26509.8, -164.09, 345.743)
 mesh = SubResource("PlaneMesh_s53fs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sceneTest"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 29343.4, -164.09, 345.743)
+mesh = SubResource("PlaneMesh_fk6dk")
 
 [node name="bigScene" type="Node" parent="."]
 

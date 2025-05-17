@@ -1,32 +1,32 @@
 shader_type spatial;
 
 uniform sampler2D tex : source_color;
-uniform sampler2D acf_tex; 
+uniform sampler2D acf_tex;
 uniform float PATCH_SCALE = 4.0;
 
 
 vec2 sample_acf(vec2 uv) {
 	float s = texture(acf_tex, uv).r;
 	s = s* 2.0 - 1.0;
-	
+
 	return vec2(s,s);
 }
 
 float square_blend(vec2 local_uv) {
-    vec2 dist = abs(local_uv - 0.5); 
+    vec2 dist = abs(local_uv - 0.5);
     return 1.0 - clamp(max(dist.x, dist.y) * 2.0, 0.0, 1.0);
 }
 
 
 void fragment() {
-	
-	
+
+
     vec2 U = UV * PATCH_SCALE;
 
     // Grille 1 (primal)
     vec2 I1 = floor(U);
     vec2 f1 = fract(U);
-	
+
 	vec2 seed1 = fract(I1 / PATCH_SCALE);
 	vec2 offset1 = sample_acf(seed1);
 
@@ -62,11 +62,11 @@ void fragment() {
     vec3 debug_color = vec3(border1 > 0.0 ? 1.0 : 0.0,
                             border2 > 0.0 ? 1.0 : 0.0,
                             0.0);
-							
+
 	ALBEDO = mix(final_color.rgb, debug_color, 0.5);
-	
 
-*/	
 
-	
+*/
+
+
 }
