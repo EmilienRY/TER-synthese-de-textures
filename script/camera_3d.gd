@@ -14,11 +14,12 @@ var current_texture_index = 0
 var patchScale = 0.0
 
 var positions = [
-	Vector3(10770.1, 1216.6, 345.703),  # texBase
-	Vector3(18729.0, 1216.6, 345.703), # fractal
-	Vector3(13406.0, 1216.6, 345.703),  # pavage et mélange
-	Vector3(16103.9, 1216.6, 345.703),   # combinaison
-	Vector3(23915.699, 1216.6, 345.703),   # carre
+	Vector3(10709.8, 1216.6, 345.703),  # texBase
+	Vector3(21213.9, 1216.6, 345.703), # fractal
+	Vector3(18729.0, 1216.6, 345.703), # fractal distance
+	Vector3(13541.6, 1216.6, 345.703),  # pavage et mélange hexa
+	Vector3(16103.9, 1216.6, 345.703),   # hexa fractal
+	Vector3(23865.9, 1216.6, 345.703),   # carre
 	Vector3(26509.801, 1216.6, 345.703)   # carré fractal
 
 ]
@@ -33,12 +34,13 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_toggle_mouse_capture()
-
+	
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_T:
 			change_texture()
 		
 	if event is InputEventKey and event.pressed:
+
 		if event.keycode == KEY_RIGHT:
 			current_index = (current_index + 1) % positions.size()
 			move_camera()
@@ -119,6 +121,7 @@ func change_texture():
 				#material.set_shader_parameter("acf_tex", acf_texture)
 			elif material is StandardMaterial3D:
 				material.albedo_texture = new_texture
+
 
 func changePatchScale():
 	for mesh in target_meshes:

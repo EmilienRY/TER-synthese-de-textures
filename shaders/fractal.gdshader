@@ -27,7 +27,7 @@ vec4 fractal_texture_mip(sampler2D t, vec2 uv, float depth,float camdis)
 void fragment()
 {
 
-    vec2 uv = UV;
+    vec2 uv = UV*1.;
     uv = fract(uv * 1.0);
 
     vec3 world_camera = (INV_VIEW_MATRIX  * vec4(vec3(0.0), 1.0)).xyz; // pos de la cam

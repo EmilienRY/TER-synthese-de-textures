@@ -7,14 +7,12 @@ vec2 rnd22(vec2 p) {
 }
 
 
-
 void fragment() {
     mat2 M0 = mat2(vec2(1.0, 0.0), vec2(0.5, sqrt(3.0)/2.0));
     mat2 M = inverse(M0);
     vec2 R = VIEWPORT_SIZE;
 
     vec2 U = UV * PATCH_SCALE;
-	//vec2 U = ( 2.*UV - R ) / R.y  *PATCH_SCALE* exp2(10);
 
     vec2 V = M * U;
     vec2 I = floor(V);

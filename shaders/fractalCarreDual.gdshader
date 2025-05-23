@@ -64,9 +64,10 @@ vec4 fractal_texture_mip(sampler2D t, vec2 uv, float depth)
     vec2 dx = dFdx(uv) / depth * exp(1.0);
     vec2 dy = dFdy(uv) / depth * exp(1.0);
 
-    vec4 tex0 = textureGrad(t, uv1, dx, dy);
-    vec4 tex1 = textureGrad(t, uv2, dx, dy);
-    vec4 tex2 = textureGrad(t, uv3, dx, dy);
+	vec4 tex0 = carreDual(uv1);
+    vec4 tex1 = carreDual(uv2);
+    vec4 tex2 = carreDual(uv3);
+	
 
 	vec4 frac=(tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
 
@@ -102,6 +103,7 @@ void fragment() {
 		float depth = camera_distance*0.001;
     	depth *= 1e3 / VIEWPORT_SIZE.y;
     	col = mix(fractal_texture_mip(tex, uv, depth),carreDual(UV),camera_distance/distMax);
+
 	}
 
 
