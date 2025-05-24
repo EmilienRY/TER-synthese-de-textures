@@ -17,7 +17,7 @@ float square_blend(vec2 local_uv) {
 }
 
 vec4 carreDual(vec2 uv){
-	
+
 	vec2 U = uv * PATCH_SCALE;
     vec4 m = texture(tex, U,99.);
 
@@ -47,7 +47,7 @@ vec4 carreDual(vec2 uv){
 
 
     vec4 final_color = (tex1 * w1 + tex2 * w2)/W +m;
-	
+
 	return final_color;
 }
 
@@ -67,7 +67,7 @@ vec4 fractal_texture_mip(sampler2D t, vec2 uv, float depth)
 	vec4 tex0 = carreDual(uv1);
     vec4 tex1 = carreDual(uv2);
     vec4 tex2 = carreDual(uv3);
-	
+
 
 	vec4 frac=(tex1 + mix(tex0, tex2, LOD_fract)) * 0.5;
 
@@ -81,7 +81,7 @@ vec4 fractal_texture_mip(sampler2D t, vec2 uv, float depth)
 
 void fragment() {
 
-   
+
     vec2 uv = UV;
     uv = fract(uv * 1.0);
 

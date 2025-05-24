@@ -83,7 +83,7 @@ material = SubResource("ShaderMaterial_4djn1")
 render_priority = 0
 shader = ExtResource("8_yl4wk")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 12.64
+shader_parameter/PATCH_SCALE = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2iaud"]
 material = SubResource("ShaderMaterial_s53fs")

@@ -26,12 +26,12 @@ void fragment() {
 
     vec4 O;
 	vec3 W;
-	
-	
+
+
 
 	if (F.z > 0.0) {
         W = vec3(F.z, F.y, F.x);
-        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I), Gx, Gy) - m)
+        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I), Gx, Gy)-m )
           + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
           + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
     } else {
@@ -44,7 +44,7 @@ void fragment() {
     O = m + O / length(W);
 	ALBEDO = O.rgb;
 
-	/*
+/*
 	float border_width = 0.03;
 
 	float border = smoothstep(0.0, border_width, min(F.x, min(F.y, F.z)));
@@ -53,6 +53,6 @@ void fragment() {
 
 	ALBEDO = mix(O.rgb, debug_color, 0.5);
 	*/
-	
-	
+
+
 }

@@ -28,8 +28,8 @@ vec4 fractal_texture_mip(sampler2D t, vec2 uv, float depth,float camdis)
     vec4 tex2 = textureGrad(t, uv3, dx, dy) - m3;
 
 	float W= sqrt(LOD_fract*LOD_fract+(1.-LOD_fract)*(1.-LOD_fract));
-	
-	
+
+
 	vec4 frac=((tex1 + mix(tex0, tex2, LOD_fract))/W + (3.*m)/3.);
 
 	return frac;

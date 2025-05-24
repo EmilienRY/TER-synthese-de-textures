@@ -53,7 +53,7 @@ void fragment() {
 	ALBEDO = final_color.rgb;
 
 	
-
+/*
 	//AFFICHAGE GRILLE
     float border_width = 0.05;
 
@@ -68,7 +68,7 @@ void fragment() {
                             0.0);
 
 	ALBEDO = mix(final_color.rgb, debug_color, 0.5);
-/*
+
 */
 
 
