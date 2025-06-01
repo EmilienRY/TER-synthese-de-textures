@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://bu407mes15n1q"]
+[gd_scene load_steps=37 format=3 uid="uid://bu407mes15n1q"]
 
 [ext_resource type="Script" uid="uid://do1703xia6w2x" path="res://script/changeScene.gd" id="1_eegc5"]
 [ext_resource type="Shader" uid="uid://drs3undkitqte" path="res://shaders/fractal.gdshader" id="2_f3ynr"]
+[ext_resource type="Texture2D" uid="uid://51seep8a0r2q" path="res://texture/herbeRose.png" id="3_1vkv7"]
 [ext_resource type="Texture2D" uid="uid://btq85c7krrdgp" path="res://texture/rocky_terrain_02_diff_4k.jpg" id="3_qydv3"]
 [ext_resource type="Shader" uid="uid://crgjqvswdbvm5" path="res://shaders/texture.gdshader" id="4_06dg8"]
 [ext_resource type="Texture2D" uid="uid://cmstw1bspn8eg" path="res://texture/ganges_river_pebbles_diff_4k.jpg" id="5_lao0r"]
@@ -30,7 +31,7 @@ material = SubResource("ShaderMaterial_syjuk")
 render_priority = 0
 shader = ExtResource("12_y2f1m")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 1.0
+shader_parameter/PATCH_SCALE = 2.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4djn1"]
 material = SubResource("ShaderMaterial_81nh3")
@@ -39,7 +40,7 @@ material = SubResource("ShaderMaterial_81nh3")
 render_priority = 0
 shader = ExtResource("13_orcp7")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 2.55
+shader_parameter/PATCH_SCALE = 2.12
 shader_parameter/distMax = 1000.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s53fs"]
@@ -83,13 +84,14 @@ material = SubResource("ShaderMaterial_4djn1")
 render_priority = 0
 shader = ExtResource("8_yl4wk")
 shader_parameter/tex = ExtResource("3_qydv3")
-shader_parameter/PATCH_SCALE = 0.0
+shader_parameter/PATCH_SCALE = 6.015
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2iaud"]
 material = SubResource("ShaderMaterial_s53fs")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rgw4"]
 albedo_texture = ExtResource("3_qydv3")
+uv1_scale = Vector3(5, 5, 5)
 texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nt64e"]
@@ -104,10 +106,10 @@ light_energy = 2.717
 light_angular_distance = 90.0
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_meshes")]
-transform = Transform3D(-1, 0, -5.62984e-09, -5.62984e-09, 4.33473e-08, 1, 0, 1, -4.33473e-08, 10709.8, 1216.6, 345.703)
+transform = Transform3D(-1, -2.44038e-16, -5.62984e-09, -5.62984e-09, 4.33473e-08, 1, 0, 1, -4.33473e-08, 10829, 1216.6, 345.703)
 script = ExtResource("7_aptur")
 target_meshes = [NodePath("../texBase"), NodePath("../fractalDistance"), NodePath("../pavage"), NodePath("../fusion"), NodePath("../sceneTest/carreDual"), NodePath("../sceneTest/fractalCarréDual"), NodePath("../fractalSansDistance")]
-textures = Array[Texture2D]([ExtResource("3_qydv3"), ExtResource("9_xrw3e"), ExtResource("5_orcp7"), ExtResource("18_1vkv7"), ExtResource("11_xklom"), ExtResource("5_lao0r"), ExtResource("10_5lbmt"), ExtResource("6_sngr0")])
+textures = Array[Texture2D]([ExtResource("3_1vkv7"), ExtResource("9_xrw3e"), ExtResource("5_orcp7"), ExtResource("18_1vkv7"), ExtResource("11_xklom"), ExtResource("5_lao0r"), ExtResource("10_5lbmt"), ExtResource("6_sngr0")])
 
 [node name="sceneTest" type="Node" parent="."]
 
@@ -138,7 +140,7 @@ skeleton = NodePath("../..")
 [node name="arbre2" type="Node" parent="bigScene/arbre2"]
 
 [node name="LabelBase" type="Label3D" parent="."]
-transform = Transform3D(-9.63545, 0, 0.00316073, 0, 18.566, 0, -0.0255618, 0, -1.19138, 10571, 229.014, 2055.95)
+transform = Transform3D(-9.63545, 0, 0.00316073, 0, 18.566, 0, -0.0255618, 0, -1.19138, 10690.2, 88.4803, 2055.95)
 text = "pavage périodique"
 font_size = 4095
 
@@ -179,7 +181,7 @@ transform = Transform3D(1000, 0, 0, 0, 1089.74, 0, 0, 0, 1000, 13541.6, -164.09,
 mesh = SubResource("PlaneMesh_2iaud")
 
 [node name="texBase" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 1040.27, 0, 0, 0, 1000, 10709.8, -164.092, 345.703)
+transform = Transform3D(1000, 0, 0, 0, 1040.27, 0, 0, 0, 1000, 10829, -164.092, 345.703)
 mesh = SubResource("PlaneMesh_nt64e")
 
 [node name="carré dual fractal" type="Label3D" parent="."]

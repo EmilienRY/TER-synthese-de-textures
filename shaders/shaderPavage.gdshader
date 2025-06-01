@@ -2,9 +2,11 @@ shader_type spatial;
 uniform sampler2D tex: source_color;
 uniform float PATCH_SCALE;
 
+
 vec2 rnd22(vec2 p) {
-	return fract(sin((p) * mat2(vec2(127.1,311.7),vec2(269.5,183.3))) * 43758.5453);
+    return fract(sin(p * mat2(vec2(127.1, 311.7), vec2(269.5, 183.3))) * 43758.5453);
 }
+
 
 
 void fragment() {
@@ -17,8 +19,8 @@ void fragment() {
     vec2 V = M * U;
     vec2 I = floor(V);
 
-    vec2 Gx = dFdx(U / PATCH_SCALE);
-    vec2 Gy = dFdy(U / PATCH_SCALE);
+    vec2 Gx = dFdx(UV);
+    vec2 Gy = dFdy(UV);
 
     vec4 m = texture(tex, U,99.);
 	vec3 F = vec3(fract(V),0.0);
@@ -31,14 +33,14 @@ void fragment() {
 
 	if (F.z > 0.0) {
         W = vec3(F.z, F.y, F.x);
-        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I), Gx, Gy)-m )
-          + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
-          + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
+        O = W.x * (textureGrad(tex, UV - rnd22(I), Gx, Gy)-m )
+          + W.y * (textureGrad(tex, UV - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m)
+          + W.z * (textureGrad(tex, UV - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m);
     } else {
         W = vec3(-F.z, 1.0 - F.y, 1.0 - F.x);
-        O = W.x * (textureGrad(tex, U / PATCH_SCALE - rnd22(I+1.0), Gx, Gy) - m)
-          + W.y * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m)
-          + W.z * (textureGrad(tex, U / PATCH_SCALE - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
+        O = W.x * (textureGrad(tex, UV - rnd22(I+1.0), Gx, Gy) - m)
+          + W.y * (textureGrad(tex, UV - rnd22(I + vec2(1.0, 0.0)), Gx, Gy) - m)
+          + W.z * (textureGrad(tex, UV - rnd22(I + vec2(0.0, 1.0)), Gx, Gy) - m);
     }
 
     O = m + O / length(W);
@@ -53,6 +55,5 @@ void fragment() {
 
 	ALBEDO = mix(O.rgb, debug_color, 0.5);
 	*/
-
 
 }
